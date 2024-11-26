@@ -29,7 +29,7 @@ def add_car(rent_car: RentCar):
 def get_car(get_id: int):
     car = [i for i in rentCars if i.id == get_id]
     if len(car) == 0:
-        raise HTTPException(status_code=404, detail="Машина не найдена")
+        raise HTTPException(status_code=404, detail="Машина с указанным id не найдена")
 
     return car[0]
 
@@ -43,7 +43,7 @@ def get_all_cars():
 def remove_car(delete_id: int):
     car_index = [i for i in range(len(rentCars)) if rentCars[i].id == delete_id]
     if len(car_index) == 0:
-        raise HTTPException(status_code=404, detail="Машина не найдена")
+        raise HTTPException(status_code=404, detail="Машина с указанным id не найдена")
 
     return rentCars.pop(car_index[0])
 
@@ -52,6 +52,6 @@ def remove_car(delete_id: int):
 def update_car(rent_car: RentCar):
     car_index = [i for i in range(len(rentCars)) if rentCars[i].id == rent_car.id]
     if len(car_index) == 0:
-        raise HTTPException(status_code=404, detail="Машина не найдена")
+        raise HTTPException(status_code=404, detail="Машина с указанным id не найдена")
     rentCars[car_index[0]] = rent_car
     return rentCars[car_index[0]]
